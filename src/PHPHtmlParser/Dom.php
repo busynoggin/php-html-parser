@@ -394,7 +394,9 @@ class Dom
         $str = mb_eregi_replace("(<\?)(.*?)(\?>)", '', $str);
 
         // strip smarty scripts
-        $str = mb_eregi_replace("(\{\w)(.*?)(\})", '', $str);
+	    if ($this->options->get('removeSmartyScripts') == true) {
+		    $str = mb_eregi_replace("(\{\w)(.*?)(\})", '', $str);
+	    }
 
         return $str;
     }
